@@ -11,27 +11,26 @@ try:
 		files = listdir(".")
 		files.sort()
 		for name in files:
-			if name[-4:].lower() == ext:
+			if name[-len(ext):].lower() == ext:
 				c += 1
 
 		for name in files:
-			if name[-4:].lower() == ext:
-				print("% Temporary renaming '" + name + "' to '" + name[:-4] + "_tmp" + ext + "'")
-				rename(name, name[:-4] + "_tmp" + ext)
+			if name[-len(ext):].lower() == ext:
+				print("% Temporary renaming '" + name + "' to '" + name[:-len(ext)] + "_tmp" + ext + "'")
+				rename(name, name[:-len(ext)] + "_tmp" + ext)
 
 		i = 1
 		files = listdir(".")
 		files.sort()
 		for name in files:
-			if name[-4:].lower() == ext:
+			if name[-len(ext):].lower() == ext:
 				newname = "0" * int(len(str(c)) - len(str(i))) + str(i) + ext
 				print("% Renaming '" + name + "' to '" + newname + "'")
 				rename(name, newname)
 				i += 1
 
-		print("% Renaming complete!")
 	else:
-		print("IMGNUM <extension>")
+		print("FILENUM <extension>")
 
 except Exception,e:
 	print(e)
