@@ -13,7 +13,7 @@ try:
 
 		for name in listdir("."):
 			if name[-4:].lower() == ext:
-				print("% Temporary renaming '" + name + "' to '" + name[:-4] + "_tmp" + ext)
+				print("% Temporary renaming '" + name + "' to '" + name[:-4] + "_tmp" + ext + "'")
 				rename(name, name[:-4] + "_tmp" + ext)
 
 		i = 1
