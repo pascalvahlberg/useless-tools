@@ -9,7 +9,7 @@ try:
 		ext = "." + argv[1].lower()
 		if argv[1].lower() == "-d":
 			ext = ""
-		elif argv[1].lower() == "-f":
+		elif argv[1].lower() == "-e":
 			ext = "."
 
 		prefix = ""
