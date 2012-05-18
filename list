@@ -3,4 +3,5 @@ nowplaying.py d41d8cd98f00b204e9800998ecf8427e
 files/numerator/filenum.py 8ed7c55a36666a0a28501f576bb98838
 messaging/skype/DEPENDENCIES 33149a72295418ecd8f63a16af1271a7
 messaging/skype/nowplaying.py 7c1e89cc54bdf80bd19b5e1bfc23b7c8
+messaging/skype/nowplaying.sh df9ee34bbdc434688ec3090607d2e8ae
 star_trek/stardate.py d6d6f4af8ced10171473132ac2b01fe0
