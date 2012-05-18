@@ -8,6 +8,7 @@ from sys import exit
 try:
 	skype = Skype4Py.Skype()
 	skype.Attach()
+	oldmood = skype.Profile("MOOD_TEXT")
 except Exception,e:
 	print(e)
 	exit(0)
@@ -34,6 +35,7 @@ if path.startswith("http://"):
 		except KeyboardInterrupt:
 			print("")
 			print("CTRL + C")
+			skype.Profile("MOOD_TEXT", oldmood)
 			exit(0)
 else:
 	print("Okay: It's a file!")
@@ -51,7 +53,18 @@ else:
 		except KeyboardInterrupt:
 			print("")
 			print("CTRL + C")
+			skype.Profile("MOOD_TEXT", oldmood)
 			exit(0)
+
+try:
+	skype.Profile("MOOD_TEXT", oldmood)
+except Exception,e:
+	print(e)
+	exit(0)
+except KeyboardInterrupt:
+	print("")
+	print("CTRL + C")
+	exit(0)
 
 print("Exiting...")
 	
