@@ -29,6 +29,7 @@ if len(argv) == 2:
 				if song != getsong:
 					song = getsong
 					skype.Profile("MOOD_TEXT", unicode(song.encode('string_escape')).encode('utf-8') + " (Now-Playing from Chiruclan)")
+					print("Updated song: " + song)
 				sleep(2)
 			except Exception,e:
 				print(e)
@@ -47,6 +48,7 @@ if len(argv) == 2:
 				if song != getsong:
 					song = getsong
 					skype.Profile("MOOD_TEXT", unicode(song.encode('string_escape')).encode('utf-8') + " (Now-Playing by Chiruclan)")
+					print("Updated song: " + song)
 				sleep(2)
 			except Exception,e:
 				print(e)
