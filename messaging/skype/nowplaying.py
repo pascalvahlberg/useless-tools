@@ -26,7 +26,7 @@ if path.startswith("http://"):
 			getsong = urlopen(path).read().rstrip()
 			if song != getsong:
 				song = getsong
-				skype.Profile("MOOD_TEXT", song + " (Now-Playing from Chiruclan)")
+				skype.Profile("MOOD_TEXT", unicode(song) + " (Now-Playing from Chiruclan)")
 			sleep(2)
 		except Exception,e:
 			print(e)
@@ -43,7 +43,7 @@ else:
 			getsong = file(path).read().rstrip()
 			if song != getsong:
 				song = getsong
-				skype.Profile("MOOD_TEXT", song + " (Now-Playing by Chiruclan)")
+				skype.Profile("MOOD_TEXT", unicode(song) + " (Now-Playing by Chiruclan)")
 			sleep(2)
 		except Exception,e:
 			print(e)
