@@ -5,6 +5,15 @@ from os import listdir, renames
 from os.path import isdir, isfile
 
 try:
+	def red(string):
+		return("\033[91m" + string + "\033[0m")
+
+	def blue(string):
+		return("\033[94m" + string + "\033[0m")
+
+	def green(string):
+		return("\033[92m" + string + "\033[0m")
+
 	if len(argv) > 1 and len(argv) < 5:
 		ext = "." + argv[1].lower()
 		if argv[1].lower() == "-d":
@@ -37,15 +46,15 @@ try:
 		for name in files:
 			if ext == "":
 				if isdir(name):
-					print("% Temporary renaming '" + name + "/' to '" + name + "_tmp/'")
+					print(blue("*") + " Temporary renaming '" + name + "/' to '" + name + "_tmp/'")
 					renames(name, name + "_tmp")
 			elif ext == ".":
 				if isfile(name):
 					if name[-5:].find(".") == -1:
-						print("% Temporary renaming '" + name + "' to '" + name + "_tmp'")
+						print(blue("*") + " Temporary renaming '" + name + "' to '" + name + "_tmp'")
 						renames(name, name + "_tmp")
 			elif name[-len(ext):].lower() == ext:
-				print("% Temporary renaming '" + name + "' to '" + name[:-len(ext)] + "_tmp" + ext + "'")
+				print(blue("*") + " Temporary renaming '" + name + "' to '" + name[:-len(ext)] + "_tmp" + ext + "'")
 				renames(name, name[:-len(ext)] + "_tmp" + ext)
 
 		i = 1
@@ -55,19 +64,19 @@ try:
 			if ext == "":
 				if isdir(name):
 					newname = "0" * int(len(str(c)) - len(str(i))) + str(i)
-					print("% Renaming '" + name + "/' to '" + prefix + newname + suffix + "/'")
+					print(green("*") + " Renaming '" + name + "/' to '" + prefix + newname + suffix + "/'")
 					renames(name, prefix + newname + suffix)
 					i += 1
 			elif ext == ".":
 				if isfile(name):
 					if name[-5:].find(".") == -1:
 						newname = "0" * int(len(str(c)) - len(str(i))) + str(i)
-						print("% Renaming '" + name + "' to '" + prefix + newname + suffix + "'")
+						print(green("*") + " Renaming '" + name + "' to '" + prefix + newname + suffix + "'")
 						renames(name, prefix + newname + suffix)
 						i += 1
 			elif name[-len(ext):].lower() == ext:
 				newname = "0" * int(len(str(c)) - len(str(i))) + str(i) + ext
-				print("% Renaming '" + name + "' to '" + prefix + newname + suffix + "'")
+				print(green("*") + " Renaming '" + name + "' to '" + prefix + newname + suffix + "'")
 				renames(name, prefix + newname + suffix)
 				i += 1
 
@@ -78,10 +87,11 @@ try:
 		print("    -e Extensionless files")
 
 except Exception,e:
-	print(e)
+	print(red("*") + " " + e)
 	exit(0)
 except KeyboardInterrupt:
-	print("CTRL + C")
+	print("")
+	print(red("*") + " CTRL + C")
 	exit(0)
 
 exit(0)
