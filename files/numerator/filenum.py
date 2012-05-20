@@ -41,7 +41,8 @@ try:
 					if name[-5:].find(".") == -1:
 						c += 1 
 			elif name[-len(ext):].lower() == ext:
-				c += 1
+				if isfile(name):
+					c += 1
 
 		for name in files:
 			if ext == "":
@@ -54,8 +55,9 @@ try:
 						print(blue("*") + " Temporary renaming '" + name + "' to '" + name + "_tmp'")
 						renames(name, name + "_tmp")
 			elif name[-len(ext):].lower() == ext:
-				print(blue("*") + " Temporary renaming '" + name + "' to '" + name[:-len(ext)] + "_tmp" + ext + "'")
-				renames(name, name[:-len(ext)] + "_tmp" + ext)
+				if isfile(name):
+					print(blue("*") + " Temporary renaming '" + name + "' to '" + name[:-len(ext)] + "_tmp" + ext + "'")
+					renames(name, name[:-len(ext)] + "_tmp" + ext)
 
 		i = 1
 		files = listdir(".")
@@ -75,10 +77,11 @@ try:
 						renames(name, prefix + newname + suffix)
 						i += 1
 			elif name[-len(ext):].lower() == ext:
-				newname = "0" * int(len(str(c)) - len(str(i))) + str(i) + ext
-				print(green("*") + " Renaming '" + name + "' to '" + prefix + newname + suffix + "'")
-				renames(name, prefix + newname + suffix)
-				i += 1
+				if isfile(name):
+					newname = "0" * int(len(str(c)) - len(str(i))) + str(i) + ext
+					print(green("*") + " Renaming '" + name + "' to '" + prefix + newname + suffix + "'")
+					renames(name, prefix + newname + suffix)
+					i += 1
 
 	else:
 		print("FILENUM <extension> [prefix] [suffix]")
