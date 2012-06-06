@@ -90,7 +90,7 @@ try:
 		print("    -e Extensionless files")
 
 except Exception,e:
-	print(red("*") + " " + e)
+	print(red("*") + " " + str(e))
 	exit(0)
 except KeyboardInterrupt:
 	print("")
