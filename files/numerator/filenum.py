@@ -24,9 +24,9 @@ try:
 		prefix = ""
 		suffix = ""
 		if len(argv) > 2:
-			prefix = argv[2] + "_"
+			prefix = argv[2]
 			if len(argv) == 4:
-				suffix = "_" + argv[3]
+				suffix = argv[3]
 
 		c = 0
 		
