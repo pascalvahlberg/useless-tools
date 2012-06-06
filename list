@@ -1,7 +1,7 @@
 README.md 5e471b444ec76845188617995b2ff910
 nowplaying.py d41d8cd98f00b204e9800998ecf8427e
 files/numerator/filenum.py bef835a80ccdf0edd407533f8cff8910
-images/resizer/jpgres.py 86b5e698c77efb850cafff417a171d50
+images/resizer/jpgres.py a50378920c92b952d42e2ffb1f5891dd
 messaging/skype/DEPENDENCIES 33149a72295418ecd8f63a16af1271a7
 messaging/skype/nowplaying.py 8dea4101de291effd5aba1e0dda50448
 messaging/skype/nowplaying.sh df9ee34bbdc434688ec3090607d2e8ae
