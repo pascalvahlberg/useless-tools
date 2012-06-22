@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from sys import argv, exit
-from os import listdir, renames
+from os import listdir, renames, access, chdir, F_OK
 from os.path import isdir, isfile
 
 try:
@@ -14,19 +14,31 @@ try:
 	def green(string):
 		return("\033[92m" + string + "\033[0m")
 
-	if len(argv) > 1 and len(argv) < 5:
-		ext = "." + argv[1].lower()
+	if len(argv) > 2 and len(argv) < 6:
+		if argv[1].find(".") != -1:
+			ext = argv[1].split(".")[-1].lower()
+		else:
+			ext = "." + argv[1].lower()
+
 		if argv[1].lower() == "-d":
 			ext = ""
 		elif argv[1].lower() == "-e":
 			ext = "."
 
+		if access(argv[2], F_OK):
+			if isdir(argv[2]):
+				chdir(argv[2])
+			else:
+				exit(0)
+		else:
+			exit(0)
+
 		prefix = ""
 		suffix = ""
-		if len(argv) > 2:
-			prefix = argv[2]
-			if len(argv) == 4:
-				suffix = argv[3]
+		if len(argv) > 3:
+			prefix = argv[3]
+			if len(argv) == 5:
+				suffix = argv[4]
 
 		c = 0
 		
@@ -84,7 +96,7 @@ try:
 					i += 1
 
 	else:
-		print("FILENUM <extension> [prefix] [suffix]")
+		print("FILENUM [<filename>.]<extension> <directory> [prefix] [suffix]")
 		print("  Special Extensions:")
 		print("    -d Directories")
 		print("    -e Extensionless files")
